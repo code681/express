@@ -1,154 +1,69 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ taglib uri="/struts-tags" prefix="s" %>
+<%@ taglib uri="/struts-tags" prefix="s"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-	<title><s:property value="#session.student.getUsername()" />您好</title>
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/jquery-ui-1.7.2.custom.css" />
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts/jquery.js" charset="UTF-8"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts/jquery-ui-1.7.2.custom.min.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts/PagerView.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts/TableView.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts/SelectorView.js"></script>
-	<script type="text/javascript" src="${pageContext.request.contextPath}/js/scripts/common.js"></script>
-
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><s:property value="#session.student.getUsername()" />您好</title>
 </head>
 <body>
 
-<script type="text/javascript">
-<!--
-$(function(){
-	$('#tabs').tabs();
-});
-//-->
-</script>
-
-<h1 class="title1">student. <s:property value="#session.student.getUsername()" />同学您好！</h1>
-
-<div id="menu">
-	<ul>
-		<li><a href="index.html">Home</a></li>
-		<li><a href="PagerView.html">PagerView</a></li>
-		<li><a href="TableView.html">TableView</a></li>
-		<li><a href="SelectorView.html">SelectorView</a></li>
-		<li><a href="Style.html">CSS样式表</a></li>
-		<li><a href="api/index.html">API文档</a></li>
-		<li><a href="js-datagrid.zip">下载</a></li>
-	</ul>
-</div>
-<div style="clear: both;"></div>
-
-
-
-<div id="tabs">
-	<ul>
-		<li><a href="#tabs-1">Demo</a></li>
-		<li><a href="#tabs-2">源码</a></li>
-	</ul>
-	<div id="tabs-1" style="background: #fff;">
-<fieldset>
-	<legend>可选框显示控件</legend>
-	<div id="table_widget_toolbar">
-		<input type="checkbox" name="title" value="title" checked="checked" />
-		标题
-		<input type="checkbox" name="" value="count" checked="checked" />
-		计数
-		<input type="checkbox" name="" value="marker" checked="checked" />
-		行复选框
-		<input type="checkbox" name="" value="filter" checked="checked" />
-		过滤器
-		<input type="checkbox" name="" value="pager" checked="checked" />
-		分页控件
-	</div>
-</fieldset>
-
-<div id="table_div"></div>
-
-<input type="button" value="当前已选中的数据的ID列表"
-	onclick="alert('当前已选中的数据的ID列表: ' + table.getSelectedKeys())" />
-
-<script type="text/javascript">
-<!--
-var table = null;
-$(function(){
-	table = new TableView('table_div');
-	table.header = {
-		id			: 'Id',
-		name		: 'Name',
-		name_cn		: '中文名',
-		text		: 'Text',
-		input		: '输入'
-	};
-	table.dataKey = 'id';
-	table.title = '可选';
-	table.pager.size = 3;
-
-	var input_html = '<input type="text" name="a" size="2" class="textbox" />';
-
-	// table.addRange() 可以用来添加数据列表.
-	table.add({id: 0, name: 'None', name_cn: '幽灵', text: 'None', input: input_html});
-	table.add({id: 1, name: 'Tom', name_cn: '汤姆', text: 'Tomcat', input: input_html});
-	table.add({id: 2, name: 'Jerry', name_cn: '杰瑞', text: 'Jerrimy', input: input_html});
-	table.add({id: 3, name: 'Jim', name_cn: '吉姆', text: 'System Engineer', input: input_html});
-	table.add({id: 4, name: 'Lucy', name_cn: '露西', text: 'Lucy & Lily', input: input_html});
-	table.add({id: 5, name: 'Jessmine', name_cn: 'Jessmine', text: 'Jessmine is a girl', input: input_html});
-	table.add({id: 6, name: 'Ta', name_cn: '他/她', text: '他/她', input: input_html});
-	table.add({id: 7, name: 'ideawu', name_cn: '我', text: '<a href="http://www.ideawu.net/">http://www.ideawu.net/</a>', input: input_html});
-	table.render();
-
-	function change_layout(){
-		$('#table_widget_toolbar input').each(function(i, cb){
-			var val = cb.value;
-			table.display[val] = cb.checked;
+	<script type="text/javascript">
+	<!--
+		$(function() {
+			$('#tabs').tabs();
 		});
-		table.render();
-	};
+	//-->
+	</script>
+	<h1 class="title1">
+		student
+		<s:property value="#session.student.getUsername()" />
+		同学您好！
+	</h1>
+	<jsp:include page="student/head.jsp" />
 
-	$('#table_widget_toolbar input').each(function(i, cb){
-		cb.onclick = change_layout;
-	});
+	<h2 class="title2">介绍</h2>
 
-	change_layout();
-});
-//-->
-</script>
-	</div>
-	<div id="tabs-2">
-<pre>
-&lt;div id="table_div"&gt;&lt;/div&gt;
-
-&lt;script type="text/javascript"&gt;
-&lt;!--
-var table = new TableView('table_div');
-table.header = {
-	id			: 'Id',
-	name		: 'Name',
-	name_cn		: '中文名',
-	text		: 'Text',
-	input		: '输入'
-};
-table.dataKey = 'id';
-table.display.filter = true;
-table.display.pager = true;
-table.pager.size = 3;
-
-var input_html = '&lt;input type="text" name="a" size="2" class="textbox" /&gt;';
-
-// table.addRange() 可以用来添加数据列表.
-table.add({id: 0, name: 'None', name_cn: '幽灵', text: 'None', input: input_html});
-table.add({id: 1, name: 'Tom', name_cn: '汤姆', text: 'Tomcat', input: input_html});
-table.add({id: 2, name: 'Jerry', name_cn: '杰瑞', text: 'Jerrimy', input: input_html});
-});
-table.render();
-//--&gt;
-&lt;/script&gt;
-</pre>
-	</div>
-</div>
+	<p>在网页开发中, 常常需要一个表格与列表相结合的控件, 即能像表格(table)一样显示丰富的信息,
+		又能像列表选择控件(select)一样方便地选择数据. 在桌面应用程序开发中, 许多GUI库都提供了类似的控件,
+		如.Net的ListView. PagerView是一个好看精巧的分页控件.
+		PagerView+TableView为网页开发提供了类似的工具, 但代码更简单, 功能更紧凑.
+		SelectorView是一个由两个TableView组合而成的控件, 相对于列表选择器, 提供了一个临时的存放已选中项的地方.</p>
 
 
+	<h2 class="title2">TODO</h2>
+
+	<ul>
+		<li>TableView的排序功能.</li>
+		<li>优化TableView中的数组操作方法.</li>
+		<li>SHIFT + 鼠标左键选择行.</li>
+	</ul>
+	<h2 class="title2">Changelog</h2>
+
+	<ul>
+		<li>2010-01-11, 重新组织文档, 将各个功能单独分开介绍, 提供"Getting Started".
+			使用jsdoc生成API文档.</li>
+		<li>2009-10-19, 数据列表使用数组保存, 取代原来的哈希, 因为哈希的元素可能是无序的(依赖于浏览器实现).</li>
+		<li>2009-09-07, 增加TableView的演示.</li>
+		<li>2009-08-14, 增加演示控件选择功能, 可以自定义是否显示某个控件, 如计数, 标题, 过滤, 行选择框,
+			分页等.</li>
+
+		<li>2009-08-13, 加入分页控件PagerView, 实现TableView的分页功能,
+			通过TableView.display.pager(bool类型)来控制. PagerView是一个独立的控件,
+			使用原生的JavaScript代码编写.</li>
+		<li>2009-08-01, 加入模糊过滤控件, 通过TableView.display.filter(bool类型)来控制.</li>
+		<li>2009-07-29, 优化, 在关键点使用原生的DOM接口替代jQuery.</li>
+		<li>2009-07-29, 加入元素数量和当前已标记行数量的统计.</li>
+		<li>2009-07-29, 增加TableView.delRange方法.
+			修改SelectorView.select和SelectorView.unselect方法,
+			应用TableView.addRange和TableView.delRange方法.</li>
+		<li>2009-07-28, 增加TableView.addRange方法, 用于添加数据集合, 解决性能问题.</li>
+
+		<li>2009-07-24, 取消TableView.refresh方法, 修改TableView.add方法,
+			添加和删除行会立即自动刷新界面. 增加良好注释.</li>
+		<li>2009-07-23, SelectorView增加双击选择或者取消选择的功能.</li>
+		<li>2009-07-23, 高亮显示被选中的行.</li>
+	</ul>
+	<jsp:include page="student/foot.jsp" />
 </body>
 </html>
-

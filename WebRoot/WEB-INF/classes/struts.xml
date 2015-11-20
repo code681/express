@@ -10,4 +10,15 @@
 			<result name="studentLoginFailure">/studentLoginFailure.jsp</result>
 		</action>
 	</package>
+	<package name="forward" namespace="" extends="struts-default">
+		<action name="forwardtostudenthomepage" class="www.express.action.forward.ForwardAction" method="forwardToStudentHomePage">
+			<result name="success">/WEB-INF/student.jsp</result>
+		</action>
+		<action name="forwardtoadminhomepage" class="www.express.action.forward.ForwardAction" method="forwardToAdminHomePage">
+			<result name="success">/WEB-INF/admin.jsp</result>
+		</action>
+		<action name="forwardtohelpupage" class="www.express.action.forward.ForwardAction" method="forwardToHelpUPage">
+			<result name="success">/WEB-INF/helpU.jsp</result>
+		</action>
+	</package>
 </struts>    
